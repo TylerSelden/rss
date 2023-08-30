@@ -2,8 +2,8 @@ const axios = require('axios');
 const fs = require('fs');
 const ical2json = require("ical2json");
 const he = require('he');
-const scheduleURL = fs.readFileSync('./schedule.txt', 'utf8');
-const assignmentsURL = fs.readFileSync('./assignments.txt', 'utf8');
+const scheduleURL = fs.readFileSync('/var/www/rss/schedule.txt', 'utf8');
+const assignmentsURL = fs.readFileSync('/var/www/rss/assignments.txt', 'utf8');
 var script = "";
 var assignments = [];
 
