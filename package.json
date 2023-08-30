@@ -1,0 +1,17 @@
+{
+  "name": "rss",
+  "version": "1.0.0",
+  "description": "An RSS client for school",
+  "main": "main.js",
+  "scripts": {
+    "test": "node main.js"
+  },
+  "author": "Tyler Selden",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "fs": "0.0.1-security",
+    "he": "^1.2.0",
+    "ical2json": "^3.1.2"
+  }
+}
