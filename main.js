@@ -86,7 +86,7 @@ function parseSchedule(ical) {
 function displayAssignments(date) {
   var today = [];
   for (var event of assignments) {
-    if (event.start.year == date.year && event.start.month == date.month && event.start.day == date.day) {
+    if (event.end.year == date.year && event.end.month == date.month && event.end.day == date.day) {
       today.push(event);
     }
   }
@@ -96,7 +96,6 @@ function displayAssignments(date) {
 
 function displaySchedule(schedule) {
   var now = new Date();
-  var date = getDate("20230828");
   var date = {
     year: now.getFullYear(),
     month: now.getMonth() + 1,
@@ -112,7 +111,7 @@ function displaySchedule(schedule) {
   }
   if (today.length == 1) {
     // no school (use labor day as an example)
-    script = `You have no school today, for the following reason: ${today[0].name}`;
+    script = `You have no school today, because: ${today[0].name}`;
   } else if (today.length == 0) {
     // usually a weekend
     console.log("There is nothing scheduled for this date.");
@@ -126,14 +125,15 @@ function displaySchedule(schedule) {
     } else {
       script += "You do not have prep or chapter today, school begins at nine.\n";
     }
-    script += "Your schedule is as follows:\n";
+    script += "\nYour schedule is as follows:\n";
     for (var i = 1; i < today.length; i++) {
-      script += today[i].name.split(" - ")[0] + "\n";
+      script += ` ${i}: ` + today[i].name.split(" - ")[0] + "\n";
     }
     var a = displayAssignments(date);
-    script += `You have ${a.length} assignments due today.\n`;
+    script += `\nYou have ${a.length} assignments due today.\n`;
 
-    script += "Have a nice day, Tyler!";
+    script += "\nHave a nice day!";
   }
+
   console.log(script);
 }
